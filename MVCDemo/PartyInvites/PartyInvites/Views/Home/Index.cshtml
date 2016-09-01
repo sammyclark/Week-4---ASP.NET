@@ -5,10 +5,13 @@
 
 <h2>Index</h2>
 
-<p>We're going to have a party!</p>
+<div class="text-center">
+    <p>We're going to have a party!</p>
 
-<img src="~/Content/images.jpg" />
-<br />
-<p>And you're invited</p>
-
-@Html.ActionLink("RSVP Now", "RsvpForm")
+    <img src="~/Content/images.jpg" />
+    <br />
+    <p>And you're invited</p>
+    <div class="btn btn-success">
+        @Html.ActionLink("RSVP Now", "RsvpForm")
+    </div>
+</div>

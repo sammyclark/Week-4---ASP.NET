@@ -4,19 +4,30 @@
     ViewBag.Title = "RsvpForm";
 }
 
-<br />
-<br />
+<div class="panel panel-success">
+    <div class="panel-heading text-center"><h4>RSVP</h4></div> 
+    <div class="panel-body">
+        <br />
+        <br />
 
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary() //displays error messages
-    <p>Your name: @Html.TextBoxFor(x => x.name)</p>
-    <p>Your email: @Html.TextBoxFor(x => x.email)</p>
-    <p>Your phone number: @Html.TextBoxFor(x => x.phone)</p>
-
-    <p>
-        Will you attend?
-        @Html.DropDownListFor(x => x.willAttend,
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary() //displays error messages
+                                    <div class="form-group">
+                                        <label>Your name: </label>
+                                        @Html.TextBoxFor(x => x.name, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Your email: </label>
+                                            @Html.TextBoxFor(x => x.email, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Your phone number: </label>
+                                            @Html.TextBoxFor(x => x.phone, new { @class = "form-control" })
+                                        </div>
+                                        <div class="form-group">
+                                        <label>Will you attend?</label>
+                                                    @Html.DropDownListFor(x => x.willAttend,
                                new[]
                                {
                                  new SelectListItem()
@@ -29,8 +40,13 @@
                                      Text = "No, I can't come",
                                      Value = bool.FalseString
                                  }
-                               }, "Choose an option")
-                                
-                                </p>
-                                <input type="submit" value="Submit RSVP"/>
-} @*end of form*@
+                               }, "Choose an option", new { @class = "form-control" })
+
+                                                
+                                </div>
+                                <div class="text-center">
+                                <input type="submit" value="Submit RSVP" />
+                                </div>
+        } @*end of form*@
+        </div>
+    </div>
