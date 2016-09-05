@@ -52,13 +52,13 @@ public partial class _Default : System.Web.UI.Page
                     incorrectLabel.Text += r.SelectedItem + " was incorrect." + "<br/>";
                     // marks the correct answers and informs you which answers are incorrect
 
-                        if (rightAns == 10)
+                        if (rightAns == 10) 
                         {
                             ansLabel.Text = "Congratulations. You got every answer correct";
                             outside.Visible = true;
                             inside.Visible = true;
-                            inside.Style.Add("width", "100px");
-                        }
+                            inside.Style.Add("width", "100px");                         
+                        } //everything works but this
                         else if ((rightAns == 9) || (rightAns == 8))
                         {
                             ansLabel.Text = "Well done. You're almost good at this.";
@@ -92,12 +92,12 @@ public partial class _Default : System.Web.UI.Page
                             ansLabel.Text = "This score is bad and you should feel bad";
                             outside.Visible = true;
                             inside.Visible = true;
-                            inside.Style.Add("width", "10px"); //works
+                            inside.Style.Add("width", "10px"); 
                         }
                         else
                         {
                             ansLabel.Text = "Are you serious? Did you actually get a zero?! Wow!";
-                            outside.Visible = true; //works                                                       
+                            outside.Visible = true;                                                        
                         }
                         // judges your score (harshly) and displays the progress panel
                     }
