@@ -36,7 +36,7 @@ public partial class _Default : System.Web.UI.Page
 
     protected void submitAns_Click(object sender, EventArgs e)
     {
-        {
+        
             foreach (RadioButtonList r in allQuestions)
             {
               if(r.SelectedValue!="")
@@ -51,8 +51,17 @@ public partial class _Default : System.Web.UI.Page
                     {
                     incorrectLabel.Text += r.SelectedItem + " was incorrect." + "<br/>";
                     // marks the correct answers and informs you which answers are incorrect
+                    }
+                }
+              else
+                {
+                    ErrorDisplay.Visible = true;
+                    ErrorMessage.Text = "You should probably attempt all the questions. <br> Such is the beauty of multiple choice";
+                    //snarky panel displays when you haven't answered all the questions
+                }
+              }
 
-                        if (rightAns == 10) 
+            if (rightAns == 10) 
                         {
                             ansLabel.Text = "Congratulations. You got every answer correct";
                             outside.Visible = true;
@@ -93,24 +102,13 @@ public partial class _Default : System.Web.UI.Page
                             outside.Visible = true;
                             inside.Visible = true;
                             inside.Style.Add("width", "10px"); 
-                        }
+                        }        
                         else
                         {
                             ansLabel.Text = "Are you serious? Did you actually get a zero?! Wow!";
                             outside.Visible = true;                                                        
                         }
                         // judges your score (harshly) and displays the progress panel
-                    }
-                }
-              else
-                {
-                    ErrorDisplay.Visible = true;
-                    ErrorMessage.Text = "You should probably attempt all the questions. <br> Such is the beauty of multiple choice";
-                    //snarky panel displays when you haven't answered all the questions
-                }
-              }          
-           }
-            
         } 
 
     }
