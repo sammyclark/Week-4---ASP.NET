@@ -59,9 +59,16 @@ public partial class _Default : System.Web.UI.Page
                             inside.Visible = true;
                             inside.Style.Add("width", "100px");
                         }
-                        else if ((rightAns <= 9) && (rightAns >= 6))
+                        else if ((rightAns == 9) || (rightAns == 8))
                         {
                             ansLabel.Text = "Well done. You're almost good at this.";
+                            outside.Visible = true;
+                            inside.Visible = true;
+                            inside.Style.Add("width", "75px");
+                        }
+                        else if ((rightAns <= 7) && (rightAns > 5))
+                        {
+                            ansLabel.Text = "So close...but so far";
                             outside.Visible = true;
                             inside.Visible = true;
                             inside.Style.Add("width", "75px");
