@@ -9,7 +9,7 @@ h1 {
     background-color: lightgrey; 
     height: 20px; 
     width: 100px; 
-    border-style: solid; /*border doesn't appear. Fix this*/
+    border-style: solid;
     border-color: black; 
     border-width: 2px;
 }
