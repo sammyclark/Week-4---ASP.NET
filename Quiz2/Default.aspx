@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link rel="stylesheet" href="StyleSheet.css" />
     <title></title>
 </head>
 <body>
@@ -91,6 +92,15 @@
             <asp:ListItem Value="correct">e</asp:ListItem>
         </asp:RadioButtonList>
         <asp:Button ID="submitAns" runat="server" Text="Submit" OnClick="submitAns_Click" />      
+        <br />
+        <br />
+       <div id="outside" runat="server">
+            <div id="inside" runat="server">
+            </div>
+        </div>
+        <asp:Panel ID="ErrorDisplay" runat="server">
+            <asp:Label ID="ErrorMessage" runat="server" Text=""></asp:Label>
+        </asp:Panel>
         <br />  
         <asp:Label ID="correctLabel" runat="server" Text=""></asp:Label>
         <br />
@@ -98,8 +108,8 @@
         <asp:Label ID="incorrectLabel" runat="server" Text=""></asp:Label>
         <br />
         <asp:Label ID="ansLabel" runat="server" Text=""></asp:Label>
-
-    </div>
-    </form>
+    </div>           
+    </form> 
+        
 </body>
 </html>

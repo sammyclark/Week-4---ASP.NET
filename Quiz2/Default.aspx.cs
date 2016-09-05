@@ -10,6 +10,7 @@ public partial class _Default : System.Web.UI.Page
     private int rightAns = 0;
     //created rightAns variable for correct answer counter
     
+    
 
   
     List<RadioButtonList> allQuestions = new List<RadioButtonList>();
@@ -29,6 +30,11 @@ public partial class _Default : System.Web.UI.Page
         allQuestions.Add(RadioButtonList9);
         allQuestions.Add(RadioButtonList10);
         //added radio buttons to list
+
+        inside.Visible = false;
+        outside.Visible = false;
+        ErrorDisplay.Visible = false;
+        //sets the progress panel and error message to invisible before the quiz has been done
     }
 
     protected void submitAns_Click(object sender, EventArgs e)
@@ -36,38 +42,67 @@ public partial class _Default : System.Web.UI.Page
         {
             foreach (RadioButtonList r in allQuestions)
             {
-                if (r.SelectedItem.Value == "correct")
-                {
+              if(r.SelectedValue!="")
+                    //makes sure that the following if loop cannot be run without selecting radioboxes
+                { 
+                    if (r.SelectedItem.Value == "correct")
+                    {
                     rightAns++;
                     correctLabel.Text = "Correct answers: " + rightAns + " out of 10";  
-                }       
-                else if (r.SelectedItem.Value != "correct")
-                {
+                    }       
+                    else if (r.SelectedItem.Value != "correct")
+                    {
                     incorrectLabel.Text += r.SelectedItem + " was incorrect." + "<br/>";
                     // marks the correct answers and informs you which answers are incorrect
 
-                    if (rightAns == 10)
-                    {
-                       ansLabel.Text = "Congratulations. You got every answer correct";
+                        if (rightAns == 10)
+                        {
+                            ansLabel.Text = "Congratulations. You got every answer correct";
+                            outside.Visible = true;
+                            inside.Visible = true;
+                            inside.Style.Add("width", "100px");
+                        }
+                        else if ((rightAns <= 9) && (rightAns >= 6))
+                        {
+                            ansLabel.Text = "Well done. You got most of the answers correct";
+                            outside.Visible = true;
+                            inside.Visible = true;
+                            inside.Style.Add("width", "75px");
+                        }
+                        else if (rightAns == 5)
+                        {
+                            ansLabel.Text = "You could brush up a little bit more";
+                            outside.Visible = true;
+                            inside.Visible = true;
+                            inside.Style.Add("width", "50px");
+                        }
+                        else if ((rightAns < 5) && (rightAns >= 3))
+                        {
+                            ansLabel.Text = "You could brush up a little bit more";
+                            outside.Visible = true;
+                            inside.Visible = true;
+                            inside.Style.Add("width", "25px");
+                        }
+                        else
+                        {
+                            ansLabel.Text = "This score is bad and you should feel bad";
+                            outside.Visible = true;
+                            inside.Visible = true;
+                            inside.Style.Add("width", "10px");
+                        }
+                        // judges your score and displays the progress panel
                     }
-                    else if ((rightAns <= 9) && (rightAns >= 6))
-                    {
-                        ansLabel.Text = "Well done. You got most of the answers correct";
-                    }
-                    else if ((rightAns <= 5) && (rightAns >= 3))
-                    {
-                        ansLabel.Text = "You could brush up a little bit more";
-                    }
-                    else
-                    {
-                        ansLabel.Text = "This score is bad and you should feel bad";
-                    }
-                    // judges your score
-                }          
-            }
+                }
+              else
+                {
+                    ErrorDisplay.Visible = true;
+                    ErrorMessage.Text = "You should probably have a go at all the questions before submitting. <br> Such is the beauty of multiple choice";
+ 
+                }
+              }          
+           }
             
         } 
 
     }
 
-}

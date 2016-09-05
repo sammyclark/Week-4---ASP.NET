@@ -1,0 +1,21 @@
+﻿body {
+}
+
+h1 {
+    text-align: center;
+}
+
+#outside {
+    background-color: lightgrey; 
+    height: 20px; 
+    width: 100px; 
+    border-style: solid; /*border doesn't appear. Fix this*/
+    border-color: black; 
+    border-width: 2px;
+}
+
+#inside {
+    background-color: indianred; 
+    height: 20px; 
+    width: 100px;
+}
